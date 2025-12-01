@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    // Some stricter flags (disabled by default)
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false,
+
+    // Code style and correctness
+    "forceConsistentCasingInFileNames": true,
+    "exactOptionalPropertyTypes": true,
+    
+    // Path aliases (optional but recommended)
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@db/*": ["./src/db/*"],
+      "@common/*": ["./src/common/*"]
+    }
+  }
+}

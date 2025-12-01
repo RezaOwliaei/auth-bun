@@ -1,0 +1,35 @@
+{
+  "name": "workspace",
+  "scripts": {
+    "dev": "NODE_ENV=development docker-compose --env-file .env.local --env-file .env.development -p auth-bun-dev -f docker-compose.yml -f docker-compose.dev.yml up --build",
+    "staging": "NODE_ENV=production docker-compose --env-file .env.production -p auth-bun-staging -f docker-compose.yml -f docker-compose.staging.yml up --build -d",
+    "prod": "NODE_ENV=production docker-compose --env-file .env.production -p auth-bun-prod -f docker-compose.yml -f docker-compose.prod.yml up --build -d",
+    "down:dev": "docker-compose -p auth-bun-dev down",
+    "down:staging": "docker-compose -p auth-bun-staging down",
+    "down:prod": "docker-compose -p auth-bun-prod down",
+    "test:e2e": "bun run migrate:test && NODE_ENV=test docker-compose --env-file .env.test -p auth-bun-test -f docker-compose.yml -f docker-compose.test.yml up --build --exit-code-from app --abort-on-container-exit",
+    "db:generate": "bunx drizzle-kit generate --config drizzle.config.ts",
+    "db:migrate": "bunx drizzle-kit migrate --config drizzle.config.ts",
+    "migrate:dev": "NODE_ENV=development docker-compose --env-file .env.local --env-file .env.development -p auth-bun-dev --profile migrations -f docker-compose.yml -f docker-compose.dev.yml run --rm migrate",
+    "migrate:test": "NODE_ENV=test docker-compose --env-file .env.test -p auth-bun-test --profile migrations -f docker-compose.yml -f docker-compose.test.yml run --rm migrate",
+    "migrate:staging": "NODE_ENV=production docker-compose --env-file .env.production -p auth-bun-staging --profile migrations -f docker-compose.yml -f docker-compose.staging.yml run --rm migrate",
+    "migrate:prod": "NODE_ENV=production docker-compose --env-file .env.production -p auth-bun-prod --profile migrations -f docker-compose.yml -f docker-compose.prod.yml run --rm migrate"
+  },
+  "module": "src/main.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "drizzle-kit": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "@biomejs/biome": "^2.3.8",
+    "drizzle-orm": "latest",
+    "elysia": "latest",
+    "postgres": "latest",
+    "zod": "^4.1.13"
+  }
+}

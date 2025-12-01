@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      target: prerelease # Use stage with dev dependencies for testing
+    command: bun test # Override the entrypoint to run tests
+    environment:
+      - NODE_ENV=test
+    env_file:
+      - .env.test
+  db:
+    env_file:
+      - .env.test
