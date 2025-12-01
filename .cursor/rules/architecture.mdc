@@ -1,0 +1,8 @@
+---
+alwaysApply: true
+---
+Strictly follow Feature-First Clean Architecture.
+
+Use this as a single Cursor rule:
+
+Group code by feature, keep strict boundaries between domain, application, infrastructure, and presentation layers, keep domain logic pure (no framework, HTTP, database, or IO), implement all business operations as application use cases, and access external concerns (databases, external APIs, messaging, etc.) only through infrastructure adapters behind application-defined interfaces.

@@ -26,10 +26,10 @@
     "typescript": "latest"
   },
   "dependencies": {
-    "@biomejs/biome": "^2.3.8",
+    "@biomejs/biome": "2.3.8",
+    "@elysiajs/swagger": "latest",
     "drizzle-orm": "latest",
     "elysia": "latest",
-    "postgres": "latest",
-    "zod": "^4.1.13"
+    "postgres": "latest"
   }
 }
